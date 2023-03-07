@@ -9,7 +9,7 @@ export function Summary() {
       <div>
         <header>
           <p>Entradas</p>
-          <img src="" alt="" />
+          <img src={incomeImg} alt="" />
         </header>
         <strong>R$ 1000,00</strong>
       </div>
@@ -17,7 +17,7 @@ export function Summary() {
       <div>
         <header>
           <p>Saidas</p>
-          <img src="" alt="" />
+          <img src={outcomeImg} alt="" />
         </header>
         <strong>R$ 500,00</strong>
       </div>
@@ -25,7 +25,7 @@ export function Summary() {
       <div className='green-box'>
         <header>
           <p>Total</p>
-          <img src="" alt="" />
+          <img src={totalImg} alt="" />
         </header>
         <strong>R$ 500,00</strong>
       </div>
