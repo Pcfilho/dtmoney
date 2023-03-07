@@ -1,17 +1,22 @@
 import Modal from "react-modal";
-import { Container, TransactionTypeContainer } from "./styles";
+import { Container, RadioBox, TransactionTypeContainer } from "./styles";
 import closeImg from "../../assets/close.svg";
 import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
+import { useState } from "react";
 
 interface Props {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
+type Type = "deposit" | "withdraw";
+
 Modal.setAppElement("#root");
 
 export function NewTransactionModal({ isOpen, onRequestClose }: Props) {
+  const [type, setType] = useState<Type>("deposit");
+
   return (
     <Modal
       isOpen={isOpen}
@@ -19,7 +24,11 @@ export function NewTransactionModal({ isOpen, onRequestClose }: Props) {
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
     >
-      <button type="button" className="react-modal-close">
+      <button
+        type="button"
+        className="react-modal-close"
+        onClick={onRequestClose}
+      >
         <img src={closeImg} alt="Fechar Modal" />
       </button>
       <Container>
@@ -30,16 +39,25 @@ export function NewTransactionModal({ isOpen, onRequestClose }: Props) {
         <input type="number" placeholder="Valor" />
 
         <TransactionTypeContainer>
-          <button type="button">
+          <RadioBox
+            type="button"
+            onClick={() => setType("deposit")}
+            isActive={type === "deposit"}
+            activeColor="green"
+          >
             <img src={incomeImg} alt="Entrada" />
             <span>Entrada</span>
-          </button>
+          </RadioBox>
 
-          <button type="button">
+          <RadioBox
+            type="button"
+            onClick={() => setType("withdraw")}
+            isActive={type === "withdraw"}
+            activeColor="red"
+          >
             <img src={outcomeImg} alt="Saída" />
             <span>Saída</span>
-
-          </button>
+          </RadioBox>
         </TransactionTypeContainer>
 
         <input placeholder="Categoria" />
