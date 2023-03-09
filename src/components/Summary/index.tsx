@@ -45,7 +45,7 @@ export function Summary() {
           <p>Saidas</p>
           <img src={outcomeImg} alt="" />
         </header>
-        <strong>
+        <strong>-
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
